@@ -22,8 +22,21 @@ Problema: Achar todas as partições de uma dada lista de strings.
 import unittest
 
 
-def subset(set):
-    return
+def sub(segment):
+    if len(segment) > 0 and segment != ['']:
+        head = sub(segment[:-1])
+        return head + [[] + [segment[-1]]
+            if item == [''] else item + [segment[-1]]
+         for item in head]
+    else:
+        return [['']]
+
+
+def subset(segment):
+    if len(segment) > 0:
+        return sorted(sub(segment), key=lambda x: len(x))
+    else:
+        return []
 
 
 class Desafio7(unittest.TestCase):
